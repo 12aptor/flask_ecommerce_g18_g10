@@ -16,3 +16,4 @@ def index():
     return "<button>Dame click</button>"
 
 import routers.productos_router
+import routers.categorias_router
