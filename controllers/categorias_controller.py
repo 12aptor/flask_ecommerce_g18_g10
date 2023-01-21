@@ -8,14 +8,29 @@ class CategoriasController:
 
     def crearCategoria(self, data):
         try:
-            categoria = self.model(data['nombre'])
+            categoria = self.model(data['nombre'], data['estado'])
             db.session.add(categoria)
             db.session.commit()
             return {
                 'data': categoria.convertirJson()
-            }
+            }, 201
         except Exception as e:
             return {
                 'message': 'Internal server error',
                 'error': str(e)
-            }
+            }, 500
+
+    def listarCategorias(self):
+        try:
+            categorias = self.model.query.all()
+            response = []
+            for categoria in categorias:
+                response.append(categoria.convertirJson())
+            return {
+                'data': response
+            }, 200
+        except Exception as e:
+            return {
+                'message': 'Internal server error',
+                'error': str(e)
+            }, 500

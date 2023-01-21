@@ -6,3 +6,8 @@ from flask import request
 def categoriasCrear():
     controller = CategoriasController()
     return controller.crearCategoria(request.json)
+
+@app.route("/categorias/listar", methods=['GET'])
+def categoriasListar():
+    controller = CategoriasController()
+    return controller.listarCategorias()
