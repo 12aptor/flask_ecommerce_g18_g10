@@ -47,3 +47,9 @@ flask db init
 flask db migrate -m "first migration"
 flask db upgrade
 ```
+
+## Instalar Flask Cors
+
+```
+pip install flask-cors
+```

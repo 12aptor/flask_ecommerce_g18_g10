@@ -8,7 +8,7 @@ class CategoriasController:
 
     def crearCategoria(self, data):
         try:
-            categoria = self.model(data['nombre'], data['estado'])
+            categoria = self.model(data['nombre'], data.get('estado'))
             db.session.add(categoria)
             db.session.commit()
             return {
